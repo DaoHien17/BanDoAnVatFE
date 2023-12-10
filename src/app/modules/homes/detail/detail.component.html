@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="/assets/css/style_detail_screen.css">
+<div class="link-out">
+    <div class="link">
+        <a href="index.html">Trang chủ</a> <i class="fas fa-caret-right"></i><a href="#">{{item[0]?.tenLoaiSanPham}}</a> <i
+            class="fas fa-caret-right"></i> {{item[0]?.tenSanPham}}
+    </div>
+</div>
+<section class="content-inner">
+    <div class="row">
+        <div class="colc-4 colc-s-6 content">
+            <div class="container">
+                <div class="mySlides">
+                    <img src="{{item[0].anhDaiDien}}">
+                </div>
+
+                <div *ngFor="let item of item" class="mySlides">
+                    <img src="assets/img/{{item.anh}}">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+                <div class="row" *ngIf="item && item.chiTietAnhSanPhams  && item.chiTietAnhSanPhams.length > 0">
+                    <div *ngFor="let it of item.chiTietAnhSanPhams" class="column">
+                        <img class="demo cursor" src="{{it.anhDaiDien}}"
+                            onclick="currentSlide(1)">
+                    </div>
+                </div>
+            </div>
+            <script src="js/image_product.js"></script>
+        </div>
+        <div class="colc-5 colc-s-6 content padding-le">
+            <div class="name" *ngIf="item">{{item[0].tenSanPham}}</div>
+            <div class="evaluate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span
+                    class="sp-eval"><a href="#cont-cmt">(1 đánh giá của khách hàng)</a></span></div>
+            <div class="price"><span class="down">{{item[0].gia| number}} VND </span></div>
+            
+            <div class="product__details__button">
+                <div class="quantity">
+                    <span>Quantity:</span>
+                    <div class="pro-qty"  ><span (click)="handleChangeQuantity(false)" class="dec qtybtn">-</span>
+                        <input type="text" [(ngModel)]="quantity">
+                    <span class="inc qtybtn" (click)="handleChangeQuantity(true)">+</span></div>
+                </div>
+                <button type="button" class="btnAdd"
+                    (click)="addToCart(item[0])"><i
+                        class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+            </div>
+            <script src="assets/js/cart.js"></script>
+        </div>
+    </div>
+</section>
+
+<section class="describe">
+        <div class="title padding_title" id="MoTa">MÔ TẢ</div>
+        <div class="title1">Giới thiệu sản phẩm:</div>
+        <h6 style="padding: 20px 0px 20px 0px;">{{item[0].moTaSanPham}}</h6> 
+   </section>
+
+
+<section class="advisory">
+    <div class="title padding_title" id="TuVan">TƯ VẤN BÁN HÀNG QUA FACEBOOK</div>
+    <div class="count">0 bình luận <span class="sp-sort">Sắp xếp theo
+            <select id="sort" name="sort">
+                <option value="old">Cũ nhất</option>
+                <option value="new">Mới nhất</option>
+            </select>
+        </span>
+    </div>
+    <div class="add-comment" style="position: relative;">
+        <div class="avatar">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="content">
+            <textarea name="mota" rows="3" cols="156" placeholder="Thêm bình luận..."></textarea>
+            <div class="content-bot">
+                <input type="checkbox" id="uptofb" name="uptofb">
+                <label for="uptofb">Cũng đang lên Facebook</label>
+                <input type="button" value="Đăng" class="btn-up">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="public-fb">
+        <i class="fab fa-facebook-square"> <a
+                href="https://developers.facebook.com/products/social-plugins/comments/?utm_campaign=social_plugins&utm_medium=offsite_pages&utm_source=comments_plugin"
+                target="_blank">Plugin bình luận trên Facebook</a></i>
+    </div>
+</section>
+<section class="module_products">
+    <div class="product_title">
+        <a href="#"><b>SẢN PHẨM TƯƠNG TỰ</b></a>
+    </div>
+    
+    <div class="row ">
+        <div class="col-2 col-s-3 content" *ngFor="let sp of list_loaisp" >
+            <a [routerLink]="['homes/detail',sp.maSanPham]"><img src="{{sp.anhDaiDien}}"></a>
+            <div class="text_product_1"><a href="#"
+                    title="#">{{sp.tenSanPham}}</a><br>
+                <span
+                    class="span_price_down"><b>{{sp.gia| number}} VND</b></span>
+            </div>
+            
+        </div>
+    
+    </div>
+</section>

@@ -1,0 +1,124 @@
+<div class="link" style="padding-top: 20px;">
+    <a href="/homes/cart" style="    font-size: 26px;
+    color: black;
+    padding-left: 150px; font-weight: bold;">Quay lại giỏ hàng</a> 
+</div>
+<!-- Checkout Section Begin -->
+<section class="main">
+    <div class="row">
+        <form [formGroup]="frmKhach" (ngSubmit)="onSubmit(frmKhach.value)">
+            <div class="col-6 col-s-12 padding-form">
+                <div class="title">THÔNG TIN THANH TOÁN</div>
+                <div class=note>(<span>*</span>) Bắt buộc</div>
+                <div class="row">
+                    <div class="col-12 col-s-12">
+                        <label for="txt_hoten">Họ tên: <span>*</span>
+                            <span *ngIf="hoten.invalid && (hoten.dirty || hoten.touched)">
+                                <span *ngIf="hoten.errors?.['required']">Họ tên không được rỗng</span>
+                                <span *ngIf="hoten.errors?.['minlength']">
+                                    Họ tên không được nhỏ hơn 3 ký tự
+                                </span>
+                                <span *ngIf="hoten.errors?.['maxlength']">
+                                    Họ tên không được lớn hơn 10 ký tự
+                                </span>
+                            </span>
+                        </label> 
+                        <br>
+                        <input formControlName="txt_hoten" type="text" ngModel>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-s-12">
+                        <label for="txt_sdt">Số điện thoại: <span>*</span>
+                            <span *ngIf="sodienthoai.invalid && (sodienthoai.dirty || sodienthoai.touched)">
+                                <span *ngIf="sodienthoai.errors?.['required']">Số điện thoại không được rỗng</span>
+                                <span *ngIf="sodienthoai.errors?.['pattern']">Không đúng định dạng số điện thoại</span>
+                            </span>
+                        </label><br>
+                        <input formControlName="txt_sdt" type="text" ngModel>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-s-12">
+                        <label for="txt_email">Email:
+                            <span *ngIf="email.invalid && (email.dirty || email.touched)">
+                                <span *ngIf="email.errors?.['email']">Không đúng định dạng của email</span>
+                            </span> 
+                        </label><br>
+                        <input formControlName="txt_email" type="text" ngModel>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-s-12">
+                        <label for="txt_diachi">Địa chỉ: <span>*</span>
+                            <span *ngIf="diachi.invalid && (diachi.dirty || diachi.touched)">
+                                <span *ngIf="diachi.errors?.['required']">Địa chỉ không được rỗng</span>
+                            </span> 
+                        </label><br>
+                        <textarea formControlName="txt_diachi" cols="135" rows="1" ngModel></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-s-12">
+                        <label for="txt_ghichu">Ghi chú:</label><br>
+                        <textarea formControlName="txt_ghichu" id="txt_ghichu" cols="135" rows="1" ngModel></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-6 col-s-12 padding-form">
+                <div class="title">ĐƠN HÀNG</div>
+                <div class="row pay" style="border-bottom: 3px solid #dbdbdb;">
+                    <div class="col-6 col-s-12" style="text-align: left; font-weight: bold;">
+                        <label>Sản phẩm</label>
+                    </div>
+                    <div class="col-6 col-s-12" style="text-align: right; font-weight: bold;">
+                        <label>Tổng</label>
+                    </div>
+                </div>
+                <div class="row pay" *ngFor="let it of list_items">
+                    <div class="col-6 col-s-12" style="text-align: left;">
+                        <label>{{it.tenSanPham}} </label>
+                    </div>
+                    <div class="col-6 col-s-12" style="text-align: right;">
+                        <label>{{it.quantity * it.gia|number}} VND</label>
+                    </div>
+                </div>
+
+                <div class="row trace">
+                    <div class="col-6 col-s-12" style="text-align: left;">
+                        <label>Tổng</label>
+                    </div>
+                    <div class="col-6 col-s-12" style="text-align: right;">
+                        <label>{{tTong|number}} VND</label>
+                    </div>
+                </div>
+               
+                <div class="row pay">
+                    <form action="#" method="POST">
+                        <div class="payments">
+                            <input type="radio" id="tienmat" name="payments" value="tm" class="radio-payments">
+                            <label for="tienmat" class="label-payments">Thanh toán tiền mặt khi nhận hàng (tiền mặt /
+                                quẹt thẻ ATM, Visa, Master)</label>
+                        </div>
+                        <div class="payments">
+                            <input type="radio" id="chuyenkhoan" name="payments" value="ck" class="radio-payments">
+                            <label for="chuyenkhoan" class="label-payments">Thanh toán qua chuyển khoản qua tài khoản
+                                ngân hàng (khuyên dùng)</label>
+                            <input type="text" id="stk" placeholder="Nhập số tài khoản ngân hàng..."
+                                style="margin-top: 10px;">
+                        </div>
+                    </form>
+                </div>
+                <div class="row pay">
+                    <div class="col-12 col-s-12" style="text-align: left;">
+                        <button onclick="DatHang()" [disabled]="frmKhach.invalid" 
+                        [ngStyle]="{'background-color':frmKhach.invalid?'#F4F6F8':'blue'}" type="submit">ĐẶT HÀNG</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+    <!-- Checkout Section End -->

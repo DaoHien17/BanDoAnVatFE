@@ -1,0 +1,159 @@
+
+<!-- Sản phẩm mới nhất -->
+<section class="module_products">
+    <div class="product_title" style="position: relative;">
+        <a href="#"><b>HÀNG MỚI VỀ</b></a>
+        <button style="position: absolute; right: 30px;"><i class="fas fa-angle-left"></i></button>
+        <button style="position: absolute; right: 5px;"><i class="fas fa-angle-right"></i></button>
+    </div>
+    <div class="row property__gallery">
+        <div class="col-2 col-s-3 women" *ngFor="let spnew of sp_moi" >
+            <div class="product__item" >
+                <div class="product__item__pic set-bg">
+                    <a [routerLink]="['homes/detail',spnew.maSanPham]"><img src="{{spnew.anhDaiDien}}"></a>
+                    <ul class="product__hover">
+                        <li><a href="#" class="image-popup"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-heart"></i> </a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i> </a></li>
+                    </ul>
+                </div>
+                <div class="product__item__text">
+                    <div class="a">{{spnew.tenSanPham}}</div>
+                    <div class="product__price">{{spnew.gia| number}} VND </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Product Section Begin -->
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="section-title">
+                    <h4>SẢN PHẨM</h4>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9">
+                <ul class="filter__controls">
+                    <li class="active" data-filter="*" (click)="handleChangeCategory(null)" >All</li>
+                    <li data-filter=".women" (click)="handleChangeCategory(mn.maLoaiSanPham)"  *ngFor="let mn of loaisp">{{mn.tenLoaiSanPham}}</li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="row property__gallery">
+            <div class="col-2 col-s-3 women" *ngFor="let sp of list_item |
+                paginate: { itemsPerPage: tableSize , currentPage: page, totalItems: count };
+                let i=index" class="col-lg-3 col-sm-8" >
+                <div class="product__item" >
+                    <div class="product__item__pic set-bg">
+                        <a [routerLink]="['homes/detail',sp.MaSanPham]"><img src="{{sp.AnhDaiDien}}"></a>
+                        <ul class="product__hover">
+                            <li><a href="#" class="image-popup"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i> </a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i> </a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <div class="a">{{sp.TenSanPham}}</div>
+                        <div class="product__price">{{sp.Gia| number}} VND </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div style="text-align: center;">
+            <pagination-controls previousLabel="Prev" nextLable="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
+        </div>
+
+    </div>
+</section>
+<!-- Product Section End -->
+<!-- Discount Section Begin -->
+<section class="discount">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                <div class="discount__pic">
+                    <img src="assets/img/show.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 p-0">
+                <div class="discount__text">
+                    <div class="discount__text__title">
+                        <span>T&L Shop</span>
+                        <h2>Ăn Vặt Ngon Ngon</h2>
+                        <h5><span>Sale</span> 50%</h5>
+                    </div>
+                    <div class="discount__countdown" id="countdown-time">
+                        <div class="countdown__item">
+                            <span>22</span>
+                            <p>Days</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span>18</span>
+                            <p>Hour</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span>46</span>
+                            <p>Min</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span>05</span>
+                            <p>Sec</p>
+                        </div>
+                    </div>
+                    <a href="#">Shop now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Discount Section End -->
+
+<!-- Services Section Begin -->
+<section class="services spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-car"></i>
+                    <h6>Miễn phí giao hàng</h6>
+                    <p style="color: black;">Cho tất cả đơn hàng từ 50K</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-money"></i>
+                    <h6>Hoàn trả tiền</h6>
+                    <p style="color: black;">Nếu sản phẩm có vấn đề</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-support"></i>
+                    <h6>Hỗ trợ trực tuyến 24/7</h6>
+                    <p style="color: black;">Hỗ trợ tận tình</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <i class="fa fa-headphones"></i>
+                    <h6>Thanh toán</h6>
+                    <p style="color: black;">100% thanh toán an toàn</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Section End -->
+
+
+
+

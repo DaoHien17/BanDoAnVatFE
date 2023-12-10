@@ -1,0 +1,69 @@
+
+
+    <div class="link">
+        <a href="index.html">Trang chủ</a> <i class="fas fa-caret-right"></i><a href="#">{{list_item[0].tenLoaiSanPham}}</a> 
+    </div>
+
+
+<!-- <section class="main-out">
+    <div class="main">
+        <div class="box-inner">
+            <div class="box-left">Sắp xếp theo</div>
+            <div class="box-right">
+                <div [ngClass]="{active: loc=='TD'}" (click)="setDieuKienLoc('TD')" class="name">Giá giảm dần</div>
+                <div [ngClass]="{active: loc=='GD'}" (click)="setDieuKienLoc('GD')" class="name">Giá tăng dần</div>
+                <select class="name" (ngModelChange)="onTableDataChange($event)" [(ngModel)]="pageSize">
+                    <option value="6">6</option>
+                    <option value="12">12</option>
+                    <option value="24">24</option> 
+                    <option value="46">46</option>
+                </select>
+            </div>
+        </div>
+        <div class="box-bottom">
+            <div class="row" *ngIf="list_item && list_item.length > 0">
+                <div *ngFor="let it of list_item" class="col-2 col-s-3 content">
+                    <a [routerLink]="['/homes/detail',it.maSanPham]"
+                        title="Màn hình thông minh Samsung LS32AM700UEXXV 32 inch 4K"><img src="{{it.anhDaiDien}}"></a>
+                    <div class="text_product_1"><a href="#"
+                            title="Màn hình thông minh Samsung LS32AM700UEXXV 32 inch 4K">{{it.tenSanPham}}</a><br>
+                        <span class="span_price_up">10.990.000₫</span><span
+                            class="span_price_down"><b>{{it.gia}}đ</b></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+        
+        
+
+
+<div class="box-bottom">
+    <div class="row">
+        <div class="col-2 col-s-3 women" *ngFor="let sp of list_item | 
+        paginate: { itemsPerPage: tableSize , currentPage: page, totalItems: count }; 
+        let i=index" class="col-lg-3 col-sm-8" >
+        <div class="product__item" >
+            <div class="product__item__pic set-bg">
+                <a [routerLink]="['homes/detail',sp.maSanPham]"><img src="{{sp.anhDaiDien}}"></a>
+                <ul class="product__hover">
+                    <li><a href="#" class="image-popup"><i class="fa fa-retweet"></i></a></li>
+                    <li><a href="#"><i class="fa fa-heart"></i> </a></li>
+                    <li><a href="#"><i class="fa fa-shopping-cart"></i> </a></li>
+                </ul>
+            </div>
+            <div class="product__item__text">
+                <div class="a">{{sp.tenSanPham}}</div>
+                <div class="product__price">{{sp.gia| number}} VND </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div style="text-align: center;">
+    <pagination-controls previousLabel="Prev" nextLable="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
+</div>
+
