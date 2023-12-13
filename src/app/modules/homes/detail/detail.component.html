@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="/assets/css/style_detail_screen.css">
 <div class="link-out">
     <div class="link">
-        <a href="index.html">Trang chủ</a> <i class="fas fa-caret-right"></i><a href="#">{{item[0]?.tenLoaiSanPham}}</a> <i
-            class="fas fa-caret-right"></i> {{item[0]?.tenSanPham}}
+        <a href="index.html">Trang chủ</a> <i class="fas fa-caret-right"></i><a href="#">{{item[0]?.TenLoaiSanPham}}</a> <i
+            class="fas fa-caret-right"></i> {{item[0]?.TenSanPham}}
     </div>
 </div>
 <section class="content-inner">
@@ -10,19 +10,19 @@
         <div class="colc-4 colc-s-6 content">
             <div class="container">
                 <div class="mySlides">
-                    <img src="{{item[0].anhDaiDien}}">
+                    <img src="{{item[0].AnhDaiDien}}">
                 </div>
 
-                <div *ngFor="let item of item" class="mySlides">
-                    <img src="assets/img/{{item.anh}}">
+                <div *ngFor="let it of item" class="mySlides">
+                    <img src="{{it.Anh}}">
                 </div>
 
                 <a class="prev" onclick="plusSlides(-1)">❮</a>
                 <a class="next" onclick="plusSlides(1)">❯</a>
 
-                <div class="row" *ngIf="item && item.chiTietAnhSanPhams  && item.chiTietAnhSanPhams.length > 0">
-                    <div *ngFor="let it of item.chiTietAnhSanPhams" class="column">
-                        <img class="demo cursor" src="{{it.anhDaiDien}}"
+                <div class="row" *ngIf="item && item.ChiTietAnhSanPhams  && item.ChiTietAnhSanPhams.length > 0">
+                    <div *ngFor="let it of item.ChiTietAnhSanPhams" class="column">
+                        <img class="demo cursor" src="{{it.AnhDaiDien}}"
                             onclick="currentSlide(1)">
                     </div>
                 </div>
@@ -30,12 +30,12 @@
             <script src="js/image_product.js"></script>
         </div>
         <div class="colc-5 colc-s-6 content padding-le">
-            <div class="name" *ngIf="item">{{item[0].tenSanPham}}</div>
+            <div class="name" *ngIf="item">{{item[0].TenSanPham}}</div>
             <div class="evaluate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                     class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span
                     class="sp-eval"><a href="#cont-cmt">(1 đánh giá của khách hàng)</a></span></div>
-            <div class="price"><span class="down">{{item[0].gia| number}} VND </span></div>
-            
+            <div class="price"><span class="down">{{item[0].Gia| number}} VND </span></div>
+
             <div class="product__details__button">
                 <div class="quantity">
                     <span>Quantity:</span>
@@ -55,7 +55,7 @@
 <section class="describe">
         <div class="title padding_title" id="MoTa">MÔ TẢ</div>
         <div class="title1">Giới thiệu sản phẩm:</div>
-        <h6 style="padding: 20px 0px 20px 0px;">{{item[0].moTaSanPham}}</h6> 
+        <h6 style="padding: 20px 0px 20px 0px;">{{item[0].MoTaSanPham}}</h6>
    </section>
 
 
@@ -92,17 +92,17 @@
     <div class="product_title">
         <a href="#"><b>SẢN PHẨM TƯƠNG TỰ</b></a>
     </div>
-    
+
     <div class="row ">
         <div class="col-2 col-s-3 content" *ngFor="let sp of list_loaisp" >
-            <a [routerLink]="['homes/detail',sp.maSanPham]"><img src="{{sp.anhDaiDien}}"></a>
+            <a [routerLink]="['homes/detail',sp.MaSanPham]"><img src="{{sp.AnhDaiDien}}"></a>
             <div class="text_product_1"><a href="#"
-                    title="#">{{sp.tenSanPham}}</a><br>
+                    title="#">{{sp.TenSanPham}}</a><br>
                 <span
-                    class="span_price_down"><b>{{sp.gia| number}} VND</b></span>
+                    class="span_price_down"><b>{{sp.Gia| number}} VND</b></span>
             </div>
-            
+
         </div>
-    
+
     </div>
 </section>

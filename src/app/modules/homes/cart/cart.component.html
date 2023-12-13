@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/assets/css/style_cart.css">
 <section class="main">
     <div class="link">
-        <a href="index.html">Tiếp tục mua sắm</a> 
+        <a href="index.html">Tiếp tục mua sắm</a>
     </div>
     <div class="title">Giỏ hàng</div>
     <div class="row">
@@ -18,20 +18,20 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let x of list">
-                        <td><img style="width: 50px; height: 50px;" src="{{x.anhDaiDien}}"> </td>
-                        <td>{{x.tenSanPham}}</td>
-                        <td>{{x.gia|number}} VND</td>
-                        <td> 
-                            <button (click)="Giam(x.maSanPham)" style="border: 1px solid #dbdbdb;padding: 4px 8px;">-</button>
+                        <td><img style="width: 50px; height: 50px;" src="{{x.AnhDaiDien}}"> </td>
+                        <td>{{x.TenSanPham}}</td>
+                        <td>{{x.Gia|number}} VND</td>
+                        <td>
+                            <button (click)="Giam(x.MaSanPham)" style="border: 1px solid #dbdbdb;padding: 4px 8px;">-</button>
                             <input  type="text" value="{{x.quantity}}" style="width: 35px;text-align:center;border: 1px solid #dbdbdb;
                             padding: 4px;margin-left: -5px;margin-right: -5px;">
-                            <button (click) ="Tang(x.maSanPham)" style="border: 1px solid #dbdbdb;padding: 4px 8px;">+</button>
+                            <button (click) ="Tang(x.MaSanPham)" style="border: 1px solid #dbdbdb;padding: 4px 8px;">+</button>
                         </td>
-                        <td>{{x.gia * x.quantity|number}} VND</td> 
-                        <td><i (click)="Xoa(x.maSanPham)" class="fa fa-times-circle" style="font-size:15px;color:red;cursor: pointer;" 
+                        <td>{{x.Gia * x.quantity|number}} VND</td>
+                        <td><i (click)="Xoa(x.MaSanPham)" class="fa fa-times-circle" style="font-size:15px;color:red;cursor: pointer;"
                             title="Xóa"></i></td>
 
-                    </tr> 
+                    </tr>
                 </tbody>
             </table>
             <div class="update">

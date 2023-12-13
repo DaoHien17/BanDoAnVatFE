@@ -19,25 +19,25 @@ export class CartComponent extends BaseComponent implements OnInit, AfterViewIni
   }
   ngOnInit(): void {
     const local_storage : any = localStorage.getItem('cart');
-    this.list = JSON.parse(local_storage || []); 
-    this.tTong = this.list.reduce((sum:any, x:any) => sum + x.gia * x.quantity, 0);
+    this.list = JSON.parse(local_storage || []);
+    this.tTong = this.list.reduce((sum:any, x:any) => sum + x.Gia * x.quantity, 0);
     console.log(this.list);
   }
   ngAfterViewInit() {
     this.loadScripts('assets/js/hide_menu.js');
   }
   public Giam(maSanPham: any) {
-    var index = this.list.findIndex((x: any) => x.maSanPham == maSanPham);
+    var index = this.list.findIndex((x: any) => x.MaSanPham == maSanPham);
     if (index >= 0 && this.list[index].quantity >= 1) {
       this.list[index].quantity -= 1;
-      this.tTong = this.list.reduce((sum:any, x:any) => sum + x.gia * x.quantity, 0);
+      this.tTong = this.list.reduce((sum:any, x:any) => sum + x.Gia * x.quantity, 0);
     }
   }
   public Tang(maSanPham: any) {
-    var index = this.list.findIndex((x: any) => x.maSanPham == maSanPham);
+    var index = this.list.findIndex((x: any) => x.MaSanPham == maSanPham);
     if (index >= 0) {
       this.list[index].quantity += 1;
-      this.tTong = this.list.reduce((sum:any, x:any) => sum + x.gia * x.quantity, 0);
+      this.tTong = this.list.reduce((sum:any, x:any) => sum + x.Gia * x.quantity, 0);
     }
   }
   public XoaCart() {
@@ -48,15 +48,21 @@ export class CartComponent extends BaseComponent implements OnInit, AfterViewIni
     }
   }
   public updateCart() {
-    localStorage.setItem('cart', JSON.stringify(this.list));
+    if (this.list != null && this.list.length > 0) {
+      localStorage.setItem('cart', JSON.stringify(this.list));
+    } else {
+      localStorage.setItem('cart','');
+      this.list = null;
+      this.tTong = 0;
+    }
     alert("Đã cập nhật thông tin giỏ hàng thành công!");
   }
   public Xoa(maSanPham: any) {
     if (confirm("Bạn muốn xóa sản phẩm này khỏi giỏ hàng!")) {
-      var index = this.list.findIndex((x: any) => x.maSanPham == maSanPham);
+      var index = this.list.findIndex((x: any) => x.MaSanPham == maSanPham);
       if (index >= 0) {
         this.list.splice(index, 1);
-        this.tTong = this.list.reduce((sum:any, x:any) => sum + x.gia * x.quantity, 0);
+        this.tTong = this.list.reduce((sum:any, x:any) => sum + x.Gia * x.quantity, 0);
       }
     }
     localStorage.clear();

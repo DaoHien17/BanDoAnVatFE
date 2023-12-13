@@ -4,12 +4,17 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
   constructor() {
-    let local_storage = JSON.parse(localStorage.getItem('cart') || '[]');
-    if (!local_storage) {
+    let local_storage;
+    try {
+      local_storage = JSON.parse(localStorage.getItem('cart') || '[]');
+      if (!local_storage) {
+        local_storage = [];
+      }
+    } catch (error) {
       local_storage = [];
     }
   }
-  
+
   public addToCart(item:any) {
     // item.quantity = 1;
     let local_storage:any;
@@ -20,15 +25,15 @@ export class CartService {
       local_storage = JSON.parse(local_storage);
       let ok = true;
       for (let x of local_storage) {
-        if (x.maSanPham == item.maSanPham) {
+        if (x.MaSanPham == item.MaSanPham) {
           x.quantity += 1;
           ok = false;
           break;
         }
       }
       if(ok){
-        local_storage.push(item); 
-      } 
+        local_storage.push(item);
+      }
     }
     localStorage.setItem('cart', JSON.stringify(local_storage));
   }
@@ -37,7 +42,11 @@ export class CartService {
     if (localStorage.getItem('cart') == null) {
       return [];
     } else {
-      return JSON.parse(localStorage.getItem('cart') || '[]');
+      try {
+        return JSON.parse(localStorage.getItem('cart') || '[]');
+      } catch (error) {
+        return [];
+      }
     }
   }
 

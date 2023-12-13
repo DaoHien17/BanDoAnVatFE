@@ -10,7 +10,7 @@
                 <a href="login.html" id="i"><i class="fas fa-user"></i> Đăng nhập</a>
                 <a href="signup.html" id="i"><i class="fas fa-user-plus"></i> Đăng ký</a>
             </span>
-            
+
         </div>
     </section>
     <section class="header-m-out">
@@ -21,7 +21,7 @@
             <a  [routerLink]="['homes/cart']" class="cart"><i class="fas fas fa-shopping-cart"></i>
                 <span  style="position: absolute ; top:0px; right: -10px; width: 23px ; height: 23px ; border-radius: 50% ; background-color: red ; font-size:14px ; line-height:23px ; text-align: center; color: white; font-weight: bold;">{{sosanphams}}</span>
             </a>
-           
+
             <form class="search" action="#" id="m">
                 <input type="text" placeholder="Tìm kiếm sản phẩm..." name="search_prod" ng-model="searchName">
                 <button type="submit"><i class="fas fa-search"></i></button>
@@ -60,7 +60,7 @@
                 <li><a href="#" ><b><span class="sp-h-bot category" > Danh mục sản phẩm</span></b></a>
                                 <ul class="submenu" style="margin-left: 440px;">
                                     <li *ngFor="let mn of loaisp">
-                                        <a [routerLink]="['homes/sploai',mn.maLoaiSanPham]"> {{mn.tenLoaiSanPham}}</a>                                 
+                                        <a [routerLink]="['homes/sploai',mn.MaLoaiSanPham]"> {{mn.TenLoaiSanPham}}</a>
                                     </li>
                                 </ul>
                 </li>
@@ -69,7 +69,7 @@
                     </li>
                 <li><a href="#"><b><span class="sp-h-bot"> Liên hệ</span></b></a></li>
                 <li><a href="#"><b><span class="sp-h-bot"> Giới thiệu</span></b></a></li>
-                
+
             </ul>
             <a href="javascript:void(0);" class="icon" onclick="openNav()">
                 <i class="fas fa-bars"></i>
@@ -85,4 +85,3 @@
         </div>
         <script src="js/slide_show.js"></script>
     </section>
-    

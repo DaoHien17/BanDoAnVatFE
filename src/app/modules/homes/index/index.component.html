@@ -10,7 +10,7 @@
         <div class="col-2 col-s-3 women" *ngFor="let spnew of sp_moi" >
             <div class="product__item" >
                 <div class="product__item__pic set-bg">
-                    <a [routerLink]="['homes/detail',spnew.maSanPham]"><img src="{{spnew.anhDaiDien}}"></a>
+                    <a [routerLink]="['homes/detail',spnew.MaSanPham]"><img src="{{spnew.AnhDaiDien}}"></a>
                     <ul class="product__hover">
                         <li><a href="#" class="image-popup"><i class="fa fa-retweet"></i></a></li>
                         <li><a href="#"><i class="fa fa-heart"></i> </a></li>
@@ -18,8 +18,8 @@
                     </ul>
                 </div>
                 <div class="product__item__text">
-                    <div class="a">{{spnew.tenSanPham}}</div>
-                    <div class="product__price">{{spnew.gia| number}} VND </div>
+                    <div class="a">{{spnew.TenSanPham}}</div>
+                    <div class="product__price">{{spnew.Gia| number}} VND </div>
                 </div>
             </div>
 
@@ -42,7 +42,7 @@
             <div class="col-lg-9 col-md-9">
                 <ul class="filter__controls">
                     <li class="active" data-filter="*" (click)="handleChangeCategory(null)" >All</li>
-                    <li data-filter=".women" (click)="handleChangeCategory(mn.maLoaiSanPham)"  *ngFor="let mn of loaisp">{{mn.tenLoaiSanPham}}</li>
+                    <li data-filter=".women" (click)="handleChangeCategory(mn.MaLoaiSanPham)"  *ngFor="let mn of loaisp">{{mn.TenLoaiSanPham}}</li>
 
                 </ul>
             </div>

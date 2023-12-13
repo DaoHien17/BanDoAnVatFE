@@ -42,8 +42,8 @@ export class DetailComponent extends BaseComponent implements OnInit, AfterViewI
       let id = params['id'];
       this._api.get('/api/Home/GetSPtheoId/' + id).subscribe(res => {
         this.item = res;
-        this._api.get('/api/Home/GetSPtheoLoai/' + this.item[0].maLoaiSanPham).subscribe(res => {
-          this.list_loaisp = res;        
+        this._api.get('/api/Home/GetSPtheoLoai/' + this.item[0].MaLoaiSanPham).subscribe(res => {
+          this.list_loaisp = res;
         });
         setTimeout(() => {
           this.loadScripts('assets/js/hide_menu.js', 'assets/js/slide_show.js');

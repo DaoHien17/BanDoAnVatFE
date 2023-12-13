@@ -34,7 +34,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     //     this.sosanphams=res;
     //   }
     // });
-    
+
     this._api.get('/api/Home/LoaiSanPham/Get').subscribe((res: any) => {
 
       this.loaisp = res;
@@ -45,12 +45,12 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 
     this._route.params.subscribe(params => {
       let id = params['id'];
-      this._api.get('/api/Home/GetSPtheoLoai/'+id).subscribe(res => {
+      this._api.get('/api/Home/GetSPtheoLoai/1').subscribe(res => {
       this.list_loaisp = res;
       console.log(res);
 
       setTimeout(() => {
-        this.loadScripts('assets/js/hide_menu.js','assets/js/slide_show.js' ); 
+        this.loadScripts('assets/js/hide_menu.js','assets/js/slide_show.js' );
       });
     });
     });
@@ -62,7 +62,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
       this.count = res.length;
       this.originListItems = res;
       setTimeout(() => {
-        this.loadScripts('assets/js/hide_menu.js','assets/js/slide_show.js' ); 
+        this.loadScripts('assets/js/hide_menu.js','assets/js/slide_show.js' );
       });
     });
   }
