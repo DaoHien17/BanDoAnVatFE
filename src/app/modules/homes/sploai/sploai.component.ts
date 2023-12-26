@@ -22,9 +22,9 @@ export class SpLoaiComponent extends BaseComponent implements OnInit,AfterViewIn
 
   constructor( injector: Injector ) {
     super(injector);
-    
+
    }
-   
+
   onSlideChange() {
     console.log('slide change');
   }
@@ -41,15 +41,15 @@ export class SpLoaiComponent extends BaseComponent implements OnInit,AfterViewIn
       console.log(res);
 
       setTimeout(() => {
-        this.loadScripts('assets/js/hide_menu.js','assets/js/slide_show.js' ); 
+        this.loadScripts('assets/js/hide_menu.js','assets/js/slide_show.js' );
       });
     });
     });
   }
- 
-  ngAfterViewInit() { 
-    //this.loadScripts('assets/js/hide_menu.js','assets/js/slide_show.js' ); 
+
+  ngAfterViewInit() {
+    //this.loadScripts('assets/js/hide_menu.js','assets/js/slide_show.js' );
   }
-  
+
 }
 

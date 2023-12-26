@@ -1,7 +1,7 @@
 
 
     <div class="link">
-        <a href="index.html">Trang chủ</a> <i class="fas fa-caret-right"></i><a href="#">{{list_item[0].tenLoaiSanPham}}</a> 
+        <a href="index.html">Trang chủ</a> <i class="fas fa-caret-right"></i><a href="#">{{list_item[0].TenLoaiSanPham}}</a>
     </div>
 
 
@@ -15,7 +15,7 @@
                 <select class="name" (ngModelChange)="onTableDataChange($event)" [(ngModel)]="pageSize">
                     <option value="6">6</option>
                     <option value="12">12</option>
-                    <option value="24">24</option> 
+                    <option value="24">24</option>
                     <option value="46">46</option>
                 </select>
             </div>
@@ -36,18 +36,18 @@
     </div>
 </section> -->
 
-        
-        
+
+
 
 
 <div class="box-bottom">
     <div class="row">
-        <div class="col-2 col-s-3 women" *ngFor="let sp of list_item | 
-        paginate: { itemsPerPage: tableSize , currentPage: page, totalItems: count }; 
+        <div class="col-2 col-s-4 women" *ngFor="let sp of list_item |
+        paginate: { itemsPerPage: tableSize , currentPage: page, totalItems: count };
         let i=index" class="col-lg-3 col-sm-8" >
         <div class="product__item" >
-            <div class="product__item__pic set-bg">
-                <a [routerLink]="['homes/detail',sp.maSanPham]"><img src="{{sp.anhDaiDien}}"></a>
+            <div class="product__item__pic set-bg" style="text-align: center;">
+                <a href="homes/detail/{{sp.MaSanPham}}" ><img height="100%" src="{{sp.AnhDaiDien}}"></a>
                 <ul class="product__hover">
                     <li><a href="#" class="image-popup"><i class="fa fa-retweet"></i></a></li>
                     <li><a href="#"><i class="fa fa-heart"></i> </a></li>
@@ -55,8 +55,8 @@
                 </ul>
             </div>
             <div class="product__item__text">
-                <div class="a">{{sp.tenSanPham}}</div>
-                <div class="product__price">{{sp.gia| number}} VND </div>
+                <div class="a">{{sp.TenSanPham}}</div>
+                <div class="product__price">{{sp.Gia| number}} VND </div>
             </div>
         </div>
     </div>
