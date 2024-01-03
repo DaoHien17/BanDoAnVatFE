@@ -1,7 +1,7 @@
 <div class="link" style="padding-top: 20px;">
     <a href="/homes/cart" style="    font-size: 26px;
     color: black;
-    padding-left: 150px; font-weight: bold;">Quay lại giỏ hàng</a> 
+    padding-left: 150px; font-weight: bold;">Quay lại giỏ hàng</a>
 </div>
 <!-- Checkout Section Begin -->
 <section class="main">
@@ -22,7 +22,7 @@
                                     Họ tên không được lớn hơn 10 ký tự
                                 </span>
                             </span>
-                        </label> 
+                        </label>
                         <br>
                         <input formControlName="txt_hoten" type="text" ngModel>
                     </div>
@@ -43,7 +43,7 @@
                         <label for="txt_email">Email:
                             <span *ngIf="email.invalid && (email.dirty || email.touched)">
                                 <span *ngIf="email.errors?.['email']">Không đúng định dạng của email</span>
-                            </span> 
+                            </span>
                         </label><br>
                         <input formControlName="txt_email" type="text" ngModel>
                     </div>
@@ -53,7 +53,7 @@
                         <label for="txt_diachi">Địa chỉ: <span>*</span>
                             <span *ngIf="diachi.invalid && (diachi.dirty || diachi.touched)">
                                 <span *ngIf="diachi.errors?.['required']">Địa chỉ không được rỗng</span>
-                            </span> 
+                            </span>
                         </label><br>
                         <textarea formControlName="txt_diachi" cols="135" rows="1" ngModel></textarea>
                     </div>
@@ -77,11 +77,14 @@
                     </div>
                 </div>
                 <div class="row pay" *ngFor="let it of list_items">
-                    <div class="col-6 col-s-12" style="text-align: left;">
-                        <label>{{it.tenSanPham}} </label>
+                  <div class="col-2 col-s-2" style="text-align: left;">
+                    <img [src]="it.AnhDaiDien" style="width: 50px;object-fit: cover;" alt="">
+                </div>
+                    <div class="col-6 col-s-6" style="text-align: left;">
+                        <label>{{it.TenSanPham + " (x"+ it.quantity+")"}} </label>
                     </div>
-                    <div class="col-6 col-s-12" style="text-align: right;">
-                        <label>{{it.quantity * it.gia|number}} VND</label>
+                    <div class="col-4 col-s-4" style="text-align: right;">
+                        <label>{{it.quantity * it.Gia|number}} VND</label>
                     </div>
                 </div>
 
@@ -93,7 +96,7 @@
                         <label>{{tTong|number}} VND</label>
                     </div>
                 </div>
-               
+
                 <div class="row pay">
                     <form action="#" method="POST">
                         <div class="payments">
@@ -112,7 +115,7 @@
                 </div>
                 <div class="row pay">
                     <div class="col-12 col-s-12" style="text-align: left;">
-                        <button onclick="DatHang()" [disabled]="frmKhach.invalid" 
+                        <button onclick="DatHang()" [disabled]="frmKhach.invalid"
                         [ngStyle]="{'background-color':frmKhach.invalid?'#F4F6F8':'blue'}" type="submit">ĐẶT HÀNG</button>
                     </div>
                 </div>

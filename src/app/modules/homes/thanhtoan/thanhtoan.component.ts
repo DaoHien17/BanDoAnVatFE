@@ -22,8 +22,8 @@ export class ThanhtoanComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     const local_storage : any = localStorage.getItem('cart');
-    this.list_items = JSON.parse(local_storage || []); 
-    this.tTong = this.list_items.reduce((sum:any, x:any) => sum + x.gia * x.quantity, 0);
+    this.list_items = JSON.parse(local_storage || []);
+    this.tTong = this.list_items.reduce((sum:any, x:any) => sum + x.Gia * x.quantity, 0);
     console.log(this.list_items);
 
     this.frmKhach = new FormGroup({
@@ -50,7 +50,7 @@ export class ThanhtoanComponent extends BaseComponent implements OnInit {
     if(this.frmKhach.invalid) {
       return;
     }
-    
+
 
     let obj:any = {};
     obj.khach =  {
@@ -62,11 +62,11 @@ export class ThanhtoanComponent extends BaseComponent implements OnInit {
     obj.donhang = [];
     this.list_items.forEach((x:any) => {
       obj.donhang.push({
-        MaSanPham: x.maSanPham,
+        MaSanPham: x.MaSanPham,
         SoLuong:x.quantity,
-        GiaMua:x.gia
-      }); 
-    }); 
+        GiaMua:x.Gia
+      });
+    });
 
     const mail: FormData = new FormData();
     mail.append('ToEmail', obj.khach.Email);
@@ -78,12 +78,7 @@ export class ThanhtoanComponent extends BaseComponent implements OnInit {
     alert("Đã đặt hàng thành công!");
     console.log(obj);
      this._api.post('/api/Customer/addcart', obj).subscribe(res => {
-      let xxx= 1;
-      this._api.sendMail('/api/Email/Send', mail).subscribe(res1 => {
-        // this.closeModal("mailModal");
-        window.location.href='/';
 
-      });
     });
     localStorage.clear();
 

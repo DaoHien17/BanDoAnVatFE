@@ -17,7 +17,7 @@ export class SpLoaiComponent extends BaseComponent implements OnInit,AfterViewIn
   subtotal:any;
   page: number=1;
   count:number=0;
-  tableSize:number=4;
+  tableSize:number=8;
   tableSizes:any=[20,30,40,50]
 
   constructor( injector: Injector ) {

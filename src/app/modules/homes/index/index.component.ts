@@ -1,6 +1,7 @@
 import { ApiService } from './../../../core/services/api.service';
 import { AfterViewInit, Component, Injector, OnInit, Renderer2 } from '@angular/core';
 import { BaseComponent } from 'src/app/core/common/base-component';
+import { CartService } from 'src/app/core/services/cart.service';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class IndexComponent extends BaseComponent implements OnInit,AfterViewIni
   public list_item:any;
   public sp_moi: any;
   public originListItems: any;
+  quantity = 1;
   public loaisp:any;
   products:any[]=[];
   subtotal:any;
@@ -20,7 +22,7 @@ export class IndexComponent extends BaseComponent implements OnInit,AfterViewIni
   tableSize:number=4;
   tableSizes:any=[20,30,40,50]
 
-  constructor( injector: Injector ) {
+  constructor( injector: Injector,private _cart: CartService ) {
     super(injector);
 
    }
@@ -40,6 +42,14 @@ export class IndexComponent extends BaseComponent implements OnInit,AfterViewIni
       });
     });
 
+  }
+  public addToCart(item: any) {
+    item.quantity = this.quantity;
+    console.log(this.quantity);
+    this._cart.addToCart(item);
+    // this._send.addObjct(this._cart.getItems().length);
+    window.location.reload();
+    alert('Đã thêm vào giở hàng thành công');
   }
 
   getAllProducts() {
