@@ -64,7 +64,9 @@ export class ThanhtoanComponent extends BaseComponent implements OnInit {
       obj.donhang.push({
         MaSanPham: x.MaSanPham,
         SoLuong:x.quantity,
-        GiaMua:x.Gia
+        GiaMua:x.Gia,
+        TenSP:x.TenSanPham,
+        Anh:x.AnhDaiDien,
       });
     });
 
