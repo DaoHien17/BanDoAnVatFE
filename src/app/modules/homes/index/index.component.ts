@@ -22,7 +22,7 @@ export class IndexComponent extends BaseComponent implements OnInit,AfterViewIni
   tableSize:number=4;
   tableSizes:any=[20,30,40,50]
 
-  constructor( injector: Injector,private _cart: CartService ) {
+  constructor( injector: Injector,private _cart: CartService ) {  // khởi tạo CartService
     super(injector);
 
    }
@@ -32,9 +32,9 @@ export class IndexComponent extends BaseComponent implements OnInit,AfterViewIni
   }
 
 
-  ngOnInit(): void {
-    this.getAllProducts();
-    this.getNewProducts();
+  ngOnInit(): void { // khi ctrinh chạy luôn mặc định
+    this.getAllProducts(); // hiển thị tất cả sản phẩm
+    this.getNewProducts(); //
     this._api.get('/api/Home/LoaiSanPham/Get').subscribe((res: any) => {
       this.loaisp = res;
       setTimeout(() => {
@@ -44,17 +44,17 @@ export class IndexComponent extends BaseComponent implements OnInit,AfterViewIni
 
   }
   public addToCart(item: any) {
-    item.quantity = this.quantity;
+    item.quantity = this.quantity; // gán lại số lượng = 1
     console.log(this.quantity);
-    this._cart.addToCart(item);
+    this._cart.addToCart(item); // truyền 1 biến vào add to cart lấy ở CartService
     // this._send.addObjct(this._cart.getItems().length);
     window.location.reload();
     alert('Đã thêm vào giở hàng thành công');
   }
 
-  getAllProducts() {
-    this._api.get('/api/Home/SanPham/Get').subscribe(res => {
-      this.list_item = res;
+  getAllProducts() { // gọi từ ngOninit
+    this._api.get('/api/Home/SanPham/Get').subscribe(res => { // gọi đến api
+      this.list_item = res; // tạo 1 biến mới để lưu thông tin trả về từ api
       this.count = res.length;
       this.originListItems = res;
       console.log(res);

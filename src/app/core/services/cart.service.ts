@@ -15,13 +15,12 @@ export class CartService {
     }
   }
 
-  public addToCart(item:any) {
-    // item.quantity = 1;
+  public addToCart(item:any) { // thêm giỏ hàng ==> lưu vào loco
     let local_storage:any;
     if (!localStorage.getItem('cart')) {
-      local_storage = [item];
+      local_storage = [item]; // nếu k tồn tại thì tạo local mới truyền thông tin sản phẩm mới vào
     } else {
-      local_storage = localStorage.getItem('cart');
+      local_storage = localStorage.getItem('cart'); // nếu tồn tại thì tăng sl lên 1
       local_storage = JSON.parse(local_storage);
       let ok = true;
       for (let x of local_storage) {
